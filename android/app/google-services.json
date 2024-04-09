@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661402288721",
+    "project_id": "rtkwater-2769c",
+    "storage_bucket": "rtkwater-2769c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661402288721:android:d663b0e26e6f1ebb446e70",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661402288721-tedf4755pv7bigl67cjvjn2nbf7o7ue2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl1I0UXDNepDIcODBC3QptEiQ-WqenC0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661402288721-tedf4755pv7bigl67cjvjn2nbf7o7ue2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
