@@ -128,6 +128,12 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
             "ความแม่นยำสูง",
             style: StyleFontStatusReady,
           );
+        } else if (cutAccuracy! == 0.00) {
+          statusText = "ความแม่นยำต่ำ";
+          textStatus = const Text(
+            "ความแม่นยำต่ำ",
+            style: StyleFontStatusNotReady,
+          );
         } else {
           statusText = "ความแม่นยำต่ำ";
           textStatus = const Text(
