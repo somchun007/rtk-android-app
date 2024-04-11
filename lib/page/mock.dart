@@ -210,7 +210,8 @@ class _MockpageState extends State<Mockpage> {
                                                 style: TextStyle(
                                                   fontFamily: "Kanit",
                                                   fontSize: 70,
-                                                  color: cutAccuracy! <= 0.05
+                                                  color: cutAccuracy! <= 0.04 &&
+                                                          cutAccuracy! != 0.00
                                                       ? Colors.green
                                                       : Colors.red,
                                                   fontWeight: FontWeight.bold,
@@ -234,7 +235,7 @@ class _MockpageState extends State<Mockpage> {
                                               padding: const EdgeInsets.only(
                                                   top: 12),
                                               child: const Text(
-                                                "m",
+                                                "m.",
                                                 style: TextStyle(
                                                   fontFamily: "Kanit",
                                                   fontSize: 60,

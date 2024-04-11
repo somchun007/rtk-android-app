@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/css/style.dart';
 import 'package:flutter_application/model/addressDetail.dart';
 import 'package:flutter_application/widgets/widget.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:intl/intl.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:audioplayers/src/source.dart' as source;
@@ -255,7 +256,7 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(width: 25),
+                                const SizedBox(width: 20),
                                 //ค่า Row ด้านขวา
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,7 +265,7 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                       children: [
                                         const Text("สถานะ",
                                             style: StyleDetailTitle),
-                                        const SizedBox(width: 34),
+                                        const SizedBox(width: 30),
                                         //แถบสีสถานะ
                                         if (detail.approve == 'waiting')
                                           Row(
@@ -345,7 +346,7 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                       children: [
                                         const Text("จังหวัด",
                                             style: StyleDetailTitle),
-                                        const SizedBox(width: 28),
+                                        const SizedBox(width: 24),
                                         Text("${detail.province}",
                                             style: StyleDetailResult),
                                       ],
@@ -355,7 +356,7 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                       children: [
                                         const Text("อำเภอ",
                                             style: StyleDetailTitle),
-                                        const SizedBox(width: 36),
+                                        const SizedBox(width: 32),
                                         Text("${detail.district}",
                                             style: StyleDetailResult),
                                       ],
@@ -365,7 +366,7 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                       children: [
                                         const Text("ตำบล",
                                             style: StyleDetailTitle),
-                                        const SizedBox(width: 40),
+                                        const SizedBox(width: 36),
                                         Text("${detail.subdistrict}",
                                             style: StyleDetailResult),
                                       ],
@@ -375,7 +376,7 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                       children: [
                                         const Text("ประเภท",
                                             style: StyleDetailTitle),
-                                        const SizedBox(width: 29),
+                                        const SizedBox(width: 25),
                                         Text("${detail.watertype}",
                                             style: StyleDetailResult),
                                       ],
@@ -460,72 +461,81 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
                                           const SliverGridDelegateWithFixedCrossAxisCount(
                                               crossAxisCount: 3),
                                       children: [
-                                        detail.urlImage1 != null
-                                            ? Container(
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: Image.network(
-                                                  detail.urlImage1.toString(),
-                                                  fit: BoxFit.cover,
-                                                  height: 250,
-                                                  width: 250,
-                                                ),
-                                              )
-                                            : Container(),
-                                        detail.urlImage2 != null
-                                            ? Container(
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: Image.network(
-                                                  detail.urlImage2.toString(),
-                                                  fit: BoxFit.cover,
-                                                  height: 250,
-                                                  width: 250,
-                                                ),
-                                              )
-                                            : Container(),
-                                        detail.urlImage3 != null
-                                            ? Container(
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: Image.network(
-                                                  detail.urlImage3.toString(),
-                                                  fit: BoxFit.cover,
-                                                  height: 250,
-                                                  width: 250,
-                                                ),
-                                              )
-                                            : Container(),
-                                        detail.urlImage4 != null
-                                            ? Container(
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: Image.network(
-                                                  detail.urlImage4.toString(),
-                                                  fit: BoxFit.cover,
-                                                  height: 250,
-                                                  width: 250,
-                                                ),
-                                              )
-                                            : Container(),
-                                        detail.urlImage5 != null
-                                            ? Container(
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: Image.network(
-                                                  detail.urlImage5.toString(),
-                                                  fit: BoxFit.cover,
-                                                  height: 250,
-                                                  width: 250,
-                                                ),
-                                              )
-                                            : Container(),
-                                        // const Card(
-                                        //   color: Colors.amberAccent,
-                                        //   child: Center(
-                                        //     child: Text("Gridbox1"),
-                                        //   ),
-                                        // ),
+                                        if (detail.urlImage1 != null)
+                                          InstaImageViewer(
+                                            child: Container(
+                                              padding: const EdgeInsets.all(4),
+                                              child: Image.network(
+                                                detail.urlImage1.toString(),
+                                                fit: BoxFit.cover,
+                                                height: 250,
+                                                width: 250,
+                                              ),
+                                            ),
+                                          ),
+                                        if (detail.urlImage2 != null)
+                                          InstaImageViewer(
+                                            child: Container(
+                                              padding: const EdgeInsets.all(4),
+                                              child: Image.network(
+                                                detail.urlImage2.toString(),
+                                                fit: BoxFit.cover,
+                                                height: 250,
+                                                width: 250,
+                                              ),
+                                            ),
+                                          ),
+                                        if (detail.urlImage3 != null)
+                                          InstaImageViewer(
+                                            child: Container(
+                                              padding: const EdgeInsets.all(4),
+                                              child: Image.network(
+                                                detail.urlImage3.toString(),
+                                                fit: BoxFit.cover,
+                                                height: 250,
+                                                width: 250,
+                                              ),
+                                            ),
+                                          ),
+                                        if (detail.urlImage4 != null)
+                                          InstaImageViewer(
+                                            child: Container(
+                                              padding: const EdgeInsets.all(4),
+                                              child: Image.network(
+                                                detail.urlImage4.toString(),
+                                                fit: BoxFit.cover,
+                                                height: 250,
+                                                width: 250,
+                                              ),
+                                            ),
+                                          ),
+                                        if (detail.urlImage5 != null)
+                                          InstaImageViewer(
+                                            child: Container(
+                                              padding: const EdgeInsets.all(4),
+                                              child: Image.network(
+                                                detail.urlImage5.toString(),
+                                                fit: BoxFit.cover,
+                                                height: 250,
+                                                width: 250,
+                                              ),
+                                            ),
+                                          ),
+
+                                        // detail.urlImage1 != null
+                                        //     ? InstaImageViewer(
+                                        //         child: Container(
+                                        //           padding:
+                                        //               const EdgeInsets.all(4),
+                                        //           child: Image.network(
+                                        //             detail.urlImage1.toString(),
+                                        //             fit: BoxFit.cover,
+                                        //             height: 250,
+                                        //             width: 250,
+                                        //           ),
+                                        //         ),
+                                        //       )
+                                        //     : Container(),
                                       ],
                                     ),
                                   ),

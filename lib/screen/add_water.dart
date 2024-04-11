@@ -122,17 +122,12 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
 
         cutAccuracy = toPrecision(accuracy!, 4);
         cutAltitude = toPrecision(altitude!, 6);
-        if (cutAccuracy! <= 0.05) {
+
+        if (cutAccuracy! <= 0.04 && cutAccuracy! != 0.00) {
           statusText = "ความแม่นยำสูง";
           textStatus = const Text(
             "ความแม่นยำสูง",
             style: StyleFontStatusReady,
-          );
-        } else if (cutAccuracy! == 0.00) {
-          statusText = "ความแม่นยำต่ำ";
-          textStatus = const Text(
-            "ความแม่นยำต่ำ",
-            style: StyleFontStatusNotReady,
           );
         } else {
           statusText = "ความแม่นยำต่ำ";
@@ -670,6 +665,9 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
                                       const SizedBox(width: 18),
                                       Text("$cutAccuracy",
                                           style: StyleDetailResult),
+                                      const SizedBox(width: 6),
+                                      const Text("m.",
+                                          style: StyleDetailResult),
                                     ],
                                   ),
                                   const SizedBox(height: 15),
@@ -975,7 +973,7 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
                               }
                             },
                           ),
-                          // const SizedBox(height: 20),
+                          const SizedBox(height: 5),
                         ],
                       ),
                     ),
