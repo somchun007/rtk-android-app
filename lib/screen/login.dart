@@ -39,8 +39,22 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<List<Profile>> signin() async {
     String email = _emailController.text;
 
-    QuerySnapshot querySnapshot =
-        await usersCollection.where('email', isEqualTo: email).get();
+    QuerySnapshot querySnapshot = await usersCollection
+        .where('email', isEqualTo: email)
+        .where('position', isEqualTo: 'mobile')
+        .where('approve', isEqualTo: true)
+        .get();
+    QuerySnapshot queryCheckEmailApprove = await usersCollection
+        .where('email', isEqualTo: email)
+        .where('position', isEqualTo: 'mobile')
+        .where('approve', isEqualTo: false)
+        .get();
+
+    if (queryCheckEmailApprove.docs.isNotEmpty) {
+      errorText = "อีเมลยังไม่ได้รับการอนุมัติ";
+      log("Email not approve");
+      return Future.error("อีเมลยังไม่ได้รับการอนุมัติ");
+    }
     if (querySnapshot.docs.isEmpty) {
       errorText = "ไม่พบอีเมลในระบบ";
       log("Email not found");
@@ -224,30 +238,34 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     ),
                                                   ),
                                                 })
-                                            .catchError((error) => {
-                                                  QuickAlert.show(
-                                                    context: context,
-                                                    type: QuickAlertType.error,
-                                                    title: error,
-                                                    confirmBtnText: "โอเค",
-                                                    barrierDismissible:
-                                                        false, //การกดบริเวณนอก Alert
-                                                    onConfirmBtnTap: () {
-                                                      if (error ==
-                                                          "รหัสผ่านไม่ถูกต้อง") {
-                                                        Navigator.pop(context);
-                                                        _passwordController
-                                                            .clear();
-                                                      } else {
-                                                        Navigator.pop(context);
-                                                        _emailController
-                                                            .clear();
-                                                        _passwordController
-                                                            .clear();
-                                                      }
-                                                    },
-                                                  ),
-                                                });
+                                            .catchError(
+                                              (error) => {
+                                                QuickAlert.show(
+                                                  context: context,
+                                                  type: error ==
+                                                          'อีเมลยังไม่ได้รับการอนุมัติ'
+                                                      ? QuickAlertType.warning
+                                                      : QuickAlertType.error,
+                                                  title: error,
+                                                  confirmBtnText: "โอเค",
+                                                  barrierDismissible:
+                                                      false, //การกดบริเวณนอก Alert
+                                                  onConfirmBtnTap: () {
+                                                    if (error ==
+                                                        "รหัสผ่านไม่ถูกต้อง") {
+                                                      Navigator.pop(context);
+                                                      _passwordController
+                                                          .clear();
+                                                    } else {
+                                                      Navigator.pop(context);
+                                                      _emailController.clear();
+                                                      _passwordController
+                                                          .clear();
+                                                    }
+                                                  },
+                                                ),
+                                              },
+                                            );
                                         // formKey.currentState!.reset();
                                       }
                                     },
