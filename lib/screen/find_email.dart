@@ -64,7 +64,6 @@ class _FindEmailScreenState extends State<FindEmailScreen> {
       appEmail: "admin@gmail.com",
       appName: "OTP Email",
       userEmail: _emailController.text,
-      // userEmail: "ksribanjong@gmail.com",
       otpLength: 4,
       otpType: OTPType.digitsOnly,
     );
