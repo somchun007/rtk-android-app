@@ -50,13 +50,11 @@ class _FindEmailScreenState extends State<FindEmailScreen> {
       return Future.error("ไม่พบอีเมลในระบบ");
     }
 
-    // List<CheckEmail> result = [];
     for (QueryDocumentSnapshot document in querySnapshot.docs) {
       docID = document.id;
     }
 
     await sendOTP();
-    // return isTrue;
   }
 
   bool? sendEmail;
