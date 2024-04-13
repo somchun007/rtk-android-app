@@ -21,15 +21,6 @@ class DetailWaterScreen extends StatefulWidget {
 }
 
 class _DetailWaterScreenState extends State<DetailWaterScreen> {
-  // String? addressID =
-
-  // *** FIREBASE ***
-  // 1.เตรียม Firebase
-  final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  // 2.กำหนด Collection ที่จะทำงาน
-  CollectionReference addressCollection =
-      FirebaseFirestore.instance.collection("addresses");
-
   late Future<dynamic> futureAddress;
   @override
   void initState() {
@@ -39,14 +30,19 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
   }
 
   String? dateUpload;
-  // List imagesList = [];
+
+  // *** FIREBASE ***
+  // 1.เตรียม Firebase
+
+  final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  CollectionReference addressCollection =
+      FirebaseFirestore.instance.collection("addresses");
 
   Future fetchAddressDetail() async {
     DocumentSnapshot docAddress =
         await addressCollection.doc(widget.documentID).get();
     final data = docAddress.data() as Map<String, dynamic>;
 
-    // print(data['urlImage1']);
     List<AddressDetail> result = [];
     AddressDetail detail = AddressDetail(
       id: docAddress.id,
@@ -85,18 +81,12 @@ class _DetailWaterScreenState extends State<DetailWaterScreen> {
     await addressCollection.doc(widget.documentID).update({
       "approve": "cancel",
     });
-    // setState(() {
-    //   futureAddress = fetchAddressDetail();
-    // });
   }
 
   Future updateStatusWaiting() async {
     await addressCollection.doc(widget.documentID).update({
       "approve": "waiting",
     });
-    // setState(() {
-    //   futureAddress = fetchAddressDetail();
-    // });
   }
 
   bool isPlayingRecord = false;
