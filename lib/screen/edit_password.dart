@@ -34,7 +34,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
       FirebaseFirestore.instance.collection("users");
 
   Future updatePassword() async {
-    String password = _currentPasswordController.text;
+    String oldPassword = _currentPasswordController.text;
     String newPassword = _newPasswordController.text;
 
     String? userID;
@@ -45,7 +45,7 @@ class _EditPasswordScreenState extends State<EditPasswordScreen> {
     final data = docUser.data() as Map<String, dynamic>;
     String passwordStored = data["password"];
 
-    var passwordIdentify = BCrypt.checkpw(password, passwordStored);
+    var passwordIdentify = BCrypt.checkpw(oldPassword, passwordStored);
 
     if (passwordIdentify) {
       if (passwordConfirmed()) {
