@@ -75,14 +75,8 @@ class _MockpageState extends State<Mockpage> {
   }
 
   Future fetchAddress() async {
-    //หาค่า Latitude, Longitude
-    // 1.ตรวจสอบการเปิดใช้งาน Location
-    // await _handleLocationPermission();
-    //หาค่าตำแหน่งที่อยู่
     position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
-    // accuracy = position.accuracy;
-    // cutAccuracy = toPrecision(accuracy!, 4);
 
     if (mounted) {
       setState(() {
@@ -101,12 +95,6 @@ class _MockpageState extends State<Mockpage> {
     if (!mounted) {
       timer?.cancel();
     }
-
-    timeSatellite = position.timestamp.millisecondsSinceEpoch;
-    DateTime tsdate = DateTime.fromMillisecondsSinceEpoch(timeSatellite);
-    formDate = DateFormat('dd/MM/yy  hh:mm:ss').format(tsdate);
-
-    print("Current time = $formDate");
   }
 
   @override
