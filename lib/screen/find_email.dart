@@ -23,10 +23,6 @@ class IDandOTP {
   int? otp;
 
   IDandOTP({this.id, this.otp});
-  // @override
-  // String toString() {
-  //   return 'id: $id , otp: $otp';
-  // }
 }
 
 class _FindEmailScreenState extends State<FindEmailScreen> {
@@ -39,8 +35,8 @@ class _FindEmailScreenState extends State<FindEmailScreen> {
 
   // *** FIREBASE ***
   // 1.เตรียม Firebase
+
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  // 2.กำหนด Collection ที่จะทำงาน
   CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
 
