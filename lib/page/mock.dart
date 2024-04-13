@@ -83,7 +83,6 @@ class _MockpageState extends State<Mockpage> {
         accuracy = position.accuracy;
         latitude = position.latitude;
         longitude = position.longitude;
-        formDate = formDate;
         speed = position.speed;
         altitude = position.altitude;
 
