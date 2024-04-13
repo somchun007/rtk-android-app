@@ -37,28 +37,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   // *** FIREBASE ***
   // 1.เตรียม Firebase
+
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  // 2.กำหนด Collection ที่จะทำงาน
   CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
-
-  Future fetchUserDetail() async {
-    DocumentSnapshot docUser = await usersCollection.doc(id).get();
-    final data = docUser.data() as Map<String, dynamic>;
-
-    List<Profile> result = [];
-    Profile detail = Profile(
-      id: id,
-      email: data['email'],
-      password: data['password'],
-      fullname: data['fullname'],
-      tel: data['tel'],
-      imageRrofile: data['imageRrofile'],
-    );
-    result.add(detail);
-    log("data: $result");
-    return Profile.formMap(docUser);
-  }
 
   Future updatePassword() async {
     String newPassword = _newPasswordController.text;
@@ -85,6 +67,24 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       log("Password don't match");
       return false;
     }
+  }
+
+  Future fetchUserDetail() async {
+    DocumentSnapshot docUser = await usersCollection.doc(id).get();
+    final data = docUser.data() as Map<String, dynamic>;
+
+    List<Profile> result = [];
+    Profile detail = Profile(
+      id: id,
+      email: data['email'],
+      password: data['password'],
+      fullname: data['fullname'],
+      tel: data['tel'],
+      imageRrofile: data['imageRrofile'],
+    );
+    result.add(detail);
+    log("data: $result");
+    return Profile.formMap(docUser);
   }
 
   @override
