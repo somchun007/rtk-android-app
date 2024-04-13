@@ -177,8 +177,8 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
 
   // *** FIREBASE ***
   // 1.เตรียม Firebase
+
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  // 2.กำหนด Collection ที่จะทำงาน
   CollectionReference addressCollection =
       FirebaseFirestore.instance.collection("addresses");
 
