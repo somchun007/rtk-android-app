@@ -83,6 +83,7 @@ class _MockpageState extends State<Mockpage> {
         accuracy = position.accuracy;
         latitude = position.latitude;
         longitude = position.longitude;
+        formDate = formDate;
         speed = position.speed;
         altitude = position.altitude;
 
@@ -94,6 +95,12 @@ class _MockpageState extends State<Mockpage> {
     if (!mounted) {
       timer?.cancel();
     }
+
+    timeSatellite = position.timestamp.millisecondsSinceEpoch;
+    DateTime tsdate = DateTime.fromMillisecondsSinceEpoch(timeSatellite);
+    formDate = DateFormat('dd/MM/yy  hh:mm:ss').format(tsdate);
+
+    print("Current time = $formDate");
   }
 
   @override
