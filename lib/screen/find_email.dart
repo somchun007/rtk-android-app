@@ -53,7 +53,6 @@ class _FindEmailScreenState extends State<FindEmailScreen> {
     for (QueryDocumentSnapshot document in querySnapshot.docs) {
       docID = document.id;
     }
-
     await sendOTP();
   }
 
