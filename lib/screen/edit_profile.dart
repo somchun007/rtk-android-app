@@ -47,7 +47,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       "tel": tel,
     });
     log("update profile success");
-    // return;
   }
 
   Future<List<Profile>> fetchUpdatedData() async {
