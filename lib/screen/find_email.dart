@@ -35,8 +35,8 @@ class _FindEmailScreenState extends State<FindEmailScreen> {
 
   // *** FIREBASE ***
   // 1.เตรียม Firebase
-
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  // 2.กำหนด Collection ที่จะทำงาน
   CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
 
