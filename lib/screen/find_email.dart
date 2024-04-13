@@ -72,7 +72,6 @@ class _FindEmailScreenState extends State<FindEmailScreen> {
 
     if (sendEmail == true) {
       log("OTP sended");
-
       scaffoldMessenger.showSnackBar(
         const SnackBar(
           content: Text(
