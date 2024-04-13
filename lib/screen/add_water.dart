@@ -358,7 +358,6 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
 
   Future uploadFile() async {
     int i = 1;
-    log("${selectedImages.length}");
     if (selectedImages.isNotEmpty) {
       //บันทึกพิกัด
       await saveLocationDetail();
