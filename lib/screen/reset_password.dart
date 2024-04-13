@@ -61,7 +61,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     log("message");
     if (_newPasswordController.text.trim() ==
         _confirmPasswordController.text.trim()) {
-      log("2222");
       return true;
     } else {
       log("Password don't match");
