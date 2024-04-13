@@ -58,7 +58,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }
 
   bool passwordConfirmed() {
-    log("message");
     if (_newPasswordController.text.trim() ==
         _confirmPasswordController.text.trim()) {
       return true;
