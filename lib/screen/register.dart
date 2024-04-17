@@ -30,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   // final _confirmPasswordController = TextEditingController();
   // final _firstnameController = TextEditingController();
   // final _lastnameController = TextEditingController();
-
   //new
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -40,12 +39,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   //date time
   int timestamp = DateTime.now().millisecondsSinceEpoch;
-  // DateTime date = DateTime.now();
 
-  // *** FIREBASE ***
-  // 1.เตรียม Firebase
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  // 2.กำหนด Collection ที่จะทำงาน
   CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
 
