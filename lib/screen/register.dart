@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           "position": "mobile",
           "dateSignup": dateCurrent,
           "timestamp": timestamp,
-          "approve": false,
+          "approve": "pass",
         });
         log("success");
         return;
