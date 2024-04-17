@@ -31,8 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   // *** FIREBASE ***
   // 1.เตรียม Firebase
+
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  // 2.กำหนด Collection ที่จะทำงาน
   CollectionReference usersCollection =
       FirebaseFirestore.instance.collection("users");
 
@@ -42,12 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
     QuerySnapshot querySnapshot = await usersCollection
         .where('email', isEqualTo: email)
         .where('position', isEqualTo: 'mobile')
-        .where('approve', isEqualTo: true)
+        .where('approve', isEqualTo: 'pass')
         .get();
     QuerySnapshot queryCheckEmailApprove = await usersCollection
         .where('email', isEqualTo: email)
         .where('position', isEqualTo: 'mobile')
-        .where('approve', isEqualTo: false)
+        .where('approve', isEqualTo: 'wait')
         .get();
 
     if (queryCheckEmailApprove.docs.isNotEmpty) {
