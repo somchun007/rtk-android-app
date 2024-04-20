@@ -106,9 +106,6 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
   bool isLoadingStatus = false;
 
   Future<Address> fetchAddress() async {
-    //หาค่า Latitude, Longitude
-    // await _handleLocationPermission();
-    //หาค่าตำแหน่งที่อยู่
     position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
     isLoadingStatus = true;
@@ -119,7 +116,6 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
         latitude = position.latitude;
         longitude = position.longitude;
         altitude = position.altitude;
-
         cutAccuracy = toPrecision(accuracy!, 4);
         cutAltitude = toPrecision(altitude!, 6);
 
@@ -141,21 +137,6 @@ class _AddWaterScreenState extends State<AddWaterScreen> {
     if (!mounted) {
       timer?.cancel();
     }
-
-    timeSatellite = position.timestamp.millisecondsSinceEpoch;
-    DateTime tsdate = DateTime.fromMillisecondsSinceEpoch(timeSatellite);
-    int yearBuddhist = tsdate.year + 543;
-    String dateCurrent =
-        DateFormat('dd MMMM $yearBuddhist hh:mm:ss').format(tsdate);
-    // DateFormat formatter = DateFormat.yMMMd();
-
-    debugPrint("accuracy= $cutAccuracy");
-    debugPrint("latitude= $latitude");
-    debugPrint("longitude= $longitude");
-    debugPrint("altitude= $cutAltitude");
-    debugPrint("dateCurrent= $dateCurrent");
-    debugPrint("timeSatellite= $timeSatellite");
-    debugPrint("water type= $selectWaterType");
 
     String apiKey = "683f7860bae9af594726778cacb24232";
     final response = await http.get(Uri.parse(
